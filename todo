@@ -1,17 +1,3 @@
-sub window must be exit when main window in exited
 
+a column which shows theh remaining tiem or date of the event
 
-CREATE TABLE "Task" (
-	"Index"	INTEGER,
-	"Name"	TEXT NOT NULL UNIQUE,
-	"Day"	DATE,
-	"Added"	DATE,
-	"Status"	TEXT,
-	"Reschedule"	TEXT,
-	"occurance"	TEXT,
-	PRIMARY KEY("Index" AUTOINCREMENT)
-);
-
-
-
-JULIANDAY(arrival) - JULIANDAY(departure) AS difference
