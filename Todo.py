@@ -4,6 +4,8 @@ from tksheet import Sheet
 import sqlite3
 from tkcalendar import DateEntry
 from datetime import date
+import pystray
+import sys
 class todolist(object):
     def __init__(self, master):
         self.master = master
@@ -26,6 +28,7 @@ class todolist(object):
         self.data_sheet.popup_menu_add_command("Mark as Completed", self.completed)
         self.data_sheet.popup_menu_add_command("Refresh", self.reload_sheet)
         self.data_sheet.popup_menu_add_command("Delete Task", self.delete_task)
+        self.data_sheet.popup_menu_add_command("Minimize to tray", self.minimize_to_tray)
         self.data_sheet.popup_menu_add_command("Exit", exit)
 # we will create a seprate function for the database connectivity 
     def reload_sheet(self):
@@ -119,6 +122,12 @@ class todolist(object):
             return data
         except :
             print("Bad class or table name")
+    def minimize_to_tray(self):
+        image = PhotoImage(width=1, height=1)
+        menu = pystray.Menu(pystray.MenuItem('Restore', lambda: self.state('normal')), pystray.MenuItem('Quit', sys.exit))
+        tray_icon = pystray.Icon("my_icon", image, "My Program", menu)
+        tray_icon.run()
+        self.withdraw()
 
 def guifunction():
     root = Tk()

@@ -7,3 +7,4 @@ Open for programmers who wants to enhance their skill and want to make their cv 
 
 2.  Libraries you need to run the program
     pip install tkcalender
+    pip install pystray
